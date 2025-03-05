@@ -1,17 +1,17 @@
-import { StyleSheet, View, Text, Pressable, Platform } from "react-native";
+import { StyleSheet, Text, Pressable } from "react-native";
 
 function GoalItem(props) {
   return (
-      <Pressable
-        android_ripple={{ color: "#141459" }}
-        onPress={props.onRemoveItem.bind(this, props.id)}
-        style={({ pressed }) => [
-          styles.goalItem,
-          Platform.OS === "ios" && pressed && styles.pressedItem,
-        ]}
-      >
-        <Text style={styles.goalText}>{props.text}</Text>
-      </Pressable>
+    <Pressable
+      android_ripple={{ color: "#3B3BFF" }}
+      onPress={props.onRemoveItem.bind(this, props.id)}
+      style={({ pressed }) => [
+        styles.goalItem,
+        pressed && styles.pressedItem,
+      ]}
+    >
+      <Text style={styles.goalText}>{props.text}</Text>
+    </Pressable>
   );
 }
 
@@ -20,20 +20,26 @@ export default GoalItem;
 const styles = StyleSheet.create({
   goalItem: {
     backgroundColor: "#5050FF",
-    marginBottom: 6,
-    borderRadius: 5,
+    marginVertical: 6,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#EEE",
-    shadowColor: "#DDD",
-    shadowRadius: 2,
-    shadowOpacity: 0.5,
-    shadowOffset: 0,
-    padding: 12,
+    borderColor: "rgba(255, 255, 255, 0.3)",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 4,
   },
   pressedItem: {
-    backgroundColor: "#141459",
+    backgroundColor: "#3B3BFF",
+    transform: [{ scale: 0.98 }],
   },
   goalText: {
     color: "#FFF",
+    fontSize: 14,
+    fontWeight: "400",
+    textAlign: "center",
   },
 });
